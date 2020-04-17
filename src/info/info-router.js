@@ -7,12 +7,7 @@ const { requireAuth } = require("../middleware/jwt-auth");
 infoRouter.use(requireAuth);
 
 infoRouter.post("/", jsonBodyParser, (req, res, next) => {
-  const {
-    cooking = "0",
-    exercise = "0",
-    food_nutrition = "0",
-    metabolism = "0",
-  } = req.body;
+  const { cooking, exercise, food_nutrition, metabolism } = req.body;
   const user_id = req.user.id;
   const interestsUser = {
     cooking,

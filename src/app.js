@@ -8,6 +8,7 @@ const authRouter = require("./auth/auth-router");
 const { requireAuth } = require("./middleware/jwt-auth");
 const registerRouter = require("./register/register-router");
 const infoRouter = require("./info/info-router");
+const biometricsRouter = require("./biometrics/biometrics-route");
 
 const app = express();
 
@@ -20,7 +21,7 @@ app.use(cors());
 app.use("/api/auth", authRouter);
 app.use("/api/users", registerRouter);
 app.use("/api/interests", infoRouter);
-
+app.use("/api/biometrics", biometricsRouter);
 app.get("/", requireAuth, (req, res) => {
   res.send("Hello, world!");
 });
