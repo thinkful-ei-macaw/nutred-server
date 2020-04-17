@@ -4,5 +4,5 @@ CREATE TABLE user_biometrics (
     user_weight numeric NOT NULL,
     activity numeric NOT NULL,
     bodytype TEXT,
-    user_id INTEGER REFERENCES nutred_users(id) NOT NULL
+    user_id INTEGER REFERENCES nutred_users(id) NOT NULL UNIQUE
     );

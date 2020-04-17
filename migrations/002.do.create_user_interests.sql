@@ -3,5 +3,6 @@ CREATE TABLE user_interests (
     cooking bit,
     exercise bit,
     food_nutrition bit,
-    user_id INTEGER REFERENCES nutred_users(id) NOT NULL
+    metabolism bit,
+    user_id INTEGER REFERENCES nutred_users(id) NOT NULL UNIQUE
     );
