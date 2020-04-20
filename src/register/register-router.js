@@ -5,8 +5,8 @@ const jsonBodyParser = express.json();
 const path = require("path");
 
 registerRouter.post("/", jsonBodyParser, (req, res, next) => {
-  const { password, user_name, full_name, age } = req.body;
-  for (const field of ["full_name", "user_name", "password", "age"])
+  const { password, user_name, full_name } = req.body;
+  for (const field of ["full_name", "user_name", "password"])
     if (!req.body[field])
       return res.status(400).json({
         error: `Missing '${field}' in request body`,
@@ -28,7 +28,6 @@ registerRouter.post("/", jsonBodyParser, (req, res, next) => {
           user_name,
           password: hashedPassword,
           full_name,
-          age,
           // date_created: "now()",
         };
 

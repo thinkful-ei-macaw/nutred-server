@@ -38,7 +38,7 @@ const RegisterService = {
       id: user.id,
       full_name: xss(user.full_name),
       user_name: xss(user.user_name),
-      age: xss(user.age),
+      // age: xss(user.age),
       // date_created: new Date(user.date_created),
     };
   },

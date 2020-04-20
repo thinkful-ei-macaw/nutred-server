@@ -9,7 +9,7 @@ const biometricsService = {
 
   getBiometricsById(db, user_id) {
     return db
-      .select("user_weight", "height", "activity")
+      .select("user_weight", "height", "activity", "gender", "age")
       .from("user_biometrics")
       .where({ user_id })
       .first();

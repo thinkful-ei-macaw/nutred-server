@@ -9,13 +9,15 @@ const { requireAuth } = require("../middleware/jwt-auth");
 biometricsRouter
   .route("/")
   .post(requireAuth, jsonBodyParser, (req, res, next) => {
-    const { height, user_weight, activity } = req.body;
+    const { height, user_weight, activity, gender, age } = req.body;
     const user_id = req.user.id;
     const biometricsUser = {
       height,
       user_weight,
       activity,
       user_id,
+      gender,
+      age,
     };
 
     BiometricsService.insertBiometrics(req.app.get("db"), biometricsUser)
