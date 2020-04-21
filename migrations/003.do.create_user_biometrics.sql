@@ -5,5 +5,6 @@ CREATE TABLE user_biometrics (
     activity numeric NOT NULL,
     gender TEXT NOT NULL,
     age numeric NOT NULL,
-    user_id INTEGER REFERENCES nutred_users(id) NOT NULL UNIQUE
+    date_created TIMESTAMPTZ DEFAULT Now(),
+    user_id INTEGER REFERENCES nutred_users(id) NOT NULL
     );

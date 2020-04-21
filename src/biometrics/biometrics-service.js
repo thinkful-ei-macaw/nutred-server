@@ -12,6 +12,7 @@ const biometricsService = {
       .select("user_weight", "height", "activity", "gender", "age")
       .from("user_biometrics")
       .where({ user_id })
+      .orderBy("date_created", "desc")
       .first();
   },
 };
