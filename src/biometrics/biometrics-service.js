@@ -15,6 +15,13 @@ const biometricsService = {
       .orderBy("date_created", "desc")
       .first();
   },
+  getWeightsById(db, user_id) {
+    return db
+      .select("user_weight", "date_created")
+      .from("user_biometrics")
+      .where({ user_id })
+      .orderBy("date_created", "desc");
+  },
 };
 
 module.exports = biometricsService;

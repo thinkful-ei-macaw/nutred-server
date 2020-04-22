@@ -41,4 +41,15 @@ biometricsRouter
       .catch(next);
   });
 
+biometricsRouter
+  .route("/weights")
+  .get(requireAuth, jsonBodyParser, (req, res, next) => {
+    const user_id = req.user.id;
+    BiometricsService.getWeightsById(req.app.get("db"), user_id)
+      .then((user) => {
+        return res.json(user);
+      })
+      .catch(next);
+  });
+
 module.exports = biometricsRouter;
