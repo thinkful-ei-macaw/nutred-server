@@ -20,7 +20,7 @@ const biometricsService = {
       .select("user_weight", "date_created")
       .from("user_biometrics")
       .where({ user_id })
-      .orderBy("date_created", "desc");
+      .orderBy("date_created");
   },
 };
 
