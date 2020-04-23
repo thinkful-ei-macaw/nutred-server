@@ -7,36 +7,58 @@ function makeUsersArray() {
       id: 1,
       user_name: "test-user-1",
       full_name: "Test user 1",
-      age: 26,
       password: "password",
     },
     {
       id: 2,
       user_name: "test-user-2",
       full_name: "Test user 2",
-      age: 26,
       password: "password",
     },
     {
       id: 3,
       user_name: "test-user-3",
       full_name: "Test user 3",
-      age: 26,
       password: "password",
     },
     {
       id: 4,
       user_name: "test-user-4",
       full_name: "Test user 4",
-      age: 26,
       password: "password",
+    },
+  ];
+}
+
+function makeBiometricsArray() {
+  return [
+    {
+      id: 1,
+      height: "150",
+      user_weight: "89",
+      activity: "3",
+      gender: "male",
+      age: "24",
+      date_created: "",
+      user_id: 1,
+    },
+    {
+      id: 1,
+      height: "150",
+      user_weight: "70",
+      activity: "3",
+      gender: "male",
+      age: "24",
+      date_created: "1",
+      user_id: 1,
     },
   ];
 }
 
 function makeNutredFixtures() {
   const testUsers = makeUsersArray();
-  return { testUsers };
+  const testBiometrics = makeBiometricsArray();
+  return { testUsers, testBiometrics };
 }
 
 function cleanTables(db) {

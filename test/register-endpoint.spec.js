@@ -12,7 +12,7 @@ describe("Users Endpoints", function () {
   before("make knex instance", () => {
     db = knex({
       client: "pg",
-      connection: process.env.TEST_DB_URL,
+      connection: process.env.TEST_DATABASE_URL,
     });
     app.set("db", db);
   });
@@ -27,14 +27,13 @@ describe("Users Endpoints", function () {
     context(`User Validation`, () => {
       beforeEach("insert users", () => helpers.seedUsers(db, testUsers));
 
-      const requiredFields = ["user_name", "password", "full_name", "age"];
+      const requiredFields = ["user_name", "password", "full_name"];
 
       requiredFields.forEach((field) => {
         const registerAttemptBody = {
           user_name: "test user_name",
           password: "test password",
           full_name: "test full_name",
-          age: 26,
         };
 
         it(`responds with 400 required error when '${field}' is missing`, () => {
@@ -52,7 +51,6 @@ describe("Users Endpoints", function () {
             user_name: "test-user",
             password: "7654321",
             full_name: "test-name",
-            age: 26,
           };
           return supertest(app)
             .post("/api/users")
@@ -66,7 +64,6 @@ describe("Users Endpoints", function () {
             user_name: "test-user",
             password: "*".repeat(73),
             full_name: "test-name",
-            age: 26,
           };
           return supertest(app)
             .post("/api/users")
@@ -78,7 +75,6 @@ describe("Users Endpoints", function () {
             user_name: "test-user",
             password: " 1@Pt4sadssd",
             full_name: "test-name",
-            age: 26,
           };
           return supertest(app)
             .post("/api/users")
@@ -92,7 +88,6 @@ describe("Users Endpoints", function () {
             user_name: "test-user",
             password: "1@Pt4sadssd ",
             full_name: "test-name",
-            age: 26,
           };
           return supertest(app)
             .post("/api/users")
@@ -106,7 +101,6 @@ describe("Users Endpoints", function () {
             user_name: "test-user",
             password: "11AAaabb",
             full_name: "test-name",
-            age: 26,
           };
           return supertest(app)
             .post("/api/users")
@@ -120,7 +114,6 @@ describe("Users Endpoints", function () {
             user_name: testUser.user_name,
             password: "11AAaabb!!",
             full_name: "test-name",
-            age: 26,
           };
           return supertest(app)
             .post("/api/users")
@@ -135,7 +128,6 @@ describe("Users Endpoints", function () {
           user_name: "test user_name",
           password: "11AAaa!!",
           full_name: "test full_name",
-          age: "25",
         };
         return supertest(app)
           .post("/api/users")
@@ -160,7 +152,6 @@ describe("Users Endpoints", function () {
               .then((row) => {
                 expect(row.user_name).to.eql(newUser.user_name);
                 expect(row.full_name).to.eql(newUser.full_name);
-                expect(row.age).to.eql(newUser.age);
 
                 return bcrypt.compare(newUser.password, row.password);
                 // const expectedDate = new Date().toLocaleString();
