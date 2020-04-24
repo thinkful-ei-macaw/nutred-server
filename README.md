@@ -41,3 +41,14 @@ Test user: username: test; password: P@ssw0rd
 ![update](/images/NDupdateweight.png "Optional Title")
 ![weightgraph](/images/NDweightgraph.png "Optional Title")
 ![caloric charts](/images/NDcaloricchart.png "Optional Title")
+
+### Tech Used
+
+- ReactJS
+- Postgres
+- SQL
+- HTML
+- JSX
+- CSS
+- NodeJS
+- Express
