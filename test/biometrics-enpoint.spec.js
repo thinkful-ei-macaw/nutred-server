@@ -38,41 +38,36 @@ describe("biometrics Endpoints", function () {
           .agent(app)
           .post("/api/auth/login")
           .send(testUser)
-          .end(console.log);
-        return agent
-          .post("/api/biometrics")
-          .send(newBiometrics)
-          .expect(201)
-          .expect((res) => {
-            expect(res.body).to.have.property("id");
-            expect(res.body.height).to.eql(newBiometrics.height);
-            expect(res.body.user_weight).to.eql(newBiometrics.user_weight);
-            expect(res.body.activity).to.eql(newBiometrics.activity);
-            expect(res.body).to.not.have.property("password");
-            expect(res.headers.location).to.eql(
-              `/api/biometrics/${res.body.id}`
-            );
-            // const expectedDate = new Date().toLocaleString();
-            // const actualDate = new Date(res.body.date_created).toLocaleString();
-            // expect(actualDate).to.eql(expectedDate);
-          })
-          .expect((res) => {
-            db.from("user_biometrics")
-              .select("*")
-              .where({ id: res.body.id })
-              .first()
-              .then((row) => {
-                expect(row.height).to.eql(newBiometrics.height);
-                expect(row.user_weight).to.eql(newBiometrics.user_weight);
-                expect(row.activity).to.eql(newBiometrics.activity);
-                expect(row.gender).to.eql(newBiometrics.gender);
-                expect(row.age).to.eql(newBiometrics.age);
-
-                // const expectedDate = new Date().toLocaleString();
-                // const actualDate = new Date(row.date_created).toLocaleString();
-                // expect(actualDate).to.eql(expectedDate);
+          .then(() => {
+            supertest(app)
+              .post("/api/biometrics")
+              .send(newBiometrics)
+              .expect(201)
+              .expect((res) => {
+                expect(res.body).to.have.property("id");
+                expect(res.body.height).to.eql(newBiometrics.height);
+                expect(res.body.user_weight).to.eql(newBiometrics.user_weight);
+                expect(res.body.activity).to.eql(newBiometrics.activity);
+                expect(res.body).to.not.have.property("password");
+                expect(res.headers.location).to.eql(
+                  `/api/biometrics/${res.body.id}`
+                );
+              })
+              .expect((res) => {
+                db.from("user_biometrics")
+                  .select("*")
+                  .where({ id: res.body.id })
+                  .first()
+                  .then((row) => {
+                    expect(row.height).to.eql(newBiometrics.height);
+                    expect(row.user_weight).to.eql(newBiometrics.user_weight);
+                    expect(row.activity).to.eql(newBiometrics.activity);
+                    expect(row.gender).to.eql(newBiometrics.gender);
+                    expect(row.age).to.eql(newBiometrics.age);
+                  });
               });
           });
+        return agent;
       });
     });
   });

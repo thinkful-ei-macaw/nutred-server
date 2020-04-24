@@ -1,26 +1,33 @@
-# Express Boilerplate!
+### NuutrEd
 
-This is a boilerplate project used for starting new projects!
+Live app: https://nutred-client.now.sh
+Live server: https://sheltered-stream-40763.herokuapp.com/
+Test user: username: test; password: P@ssw0rd
 
-## Set up
+### API Docs:
 
-Complete the following steps to start a new project (NEW-PROJECT-NAME):
+- POST /auth/login
+  - POST https://sheltered-stream-40763.herokuapp.com/api/auth/login
+  - allows users to login to their account
+- POST
+  - https://sheltered-stream-40763.herokuapp.com/api/users
+  - allows a user to sign up for an account
+- POST
+  - https://sheltered-stream-40763.herokuapp.com/api/biometrics
+  - allows users to post their biometrics information into the database based on user_id
+- GET
+  - https://sheltered-stream-40763.herokuapp.com/api/biometrics
+  - retrieves biometric information for the currently logged in user
+- GET
+  - https://sheltered-stream-40763.herokuapp.com/api/biometrics/weights
+  - retrieves weight data for the currently logged in user
 
-1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
-2. `cd` into the cloned repository
-3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
-4. Install the node dependencies `npm install`
-5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
+### Summary
 
-## Scripts
-
-Start the application `npm start`
-
-Start nodemon for the application `npm run dev`
-
-Run the tests `npm test`
-
-## Deploying
-
-When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's master branch.
+- This app allows users to register/sign into their account
+- This app collects basic user biometric data to analyze
+- This app allows users to see their current biometrics on a dashboard and current caloric TDEE
+- This app has a nav bar linking to 2 pages of interpreted data of user biometrics
+- The user can see 4 seperate goal charts for different diet endpoints, each with percentages of CHO, PRO, and FATS, as well as an adjusted BMR. Additionally, this break down includes the total number of grams of macronutrient are required to meet that daily goal.
+- The user can update their weight on the dashboard
+- The user can track on a line graph how their progress in weight has changed overtime
