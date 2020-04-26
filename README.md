@@ -34,13 +34,13 @@ Test user: username: Test; password: P@ssw0rd
 
 ### Screenshots
 
-![Landing](/images/NuutredLanding.png)
-![Login](/images/NDlogin.png)
-![biometric](/images/NDbiometricgather.png)
-![dashboard](/images/NDdashboard.png)
-![update](/images/NDupdateweight.png)
-![weightgraph](/images/NDweightgraph.png)
-![caloric charts](/images/NDcaloricchart.png)
+![Landing](/images/NuutredLanding.PNG)
+![Login](/images/NDlogin.PNG)
+![biometric](/images/NDbiometricgather.PNG)
+![dashboard](/images/NDdashboard.PNG)
+![update](/images/NDupdateweight.PNG)
+![weightgraph](/images/NDweightgraph.PNG)
+![caloric charts](/images/NDcaloricchart.PNG)
 
 ### Tech Used
 
