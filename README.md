@@ -2,7 +2,7 @@
 
 Live app: https://nutred-client.now.sh
 Live server: https://sheltered-stream-40763.herokuapp.com/
-Test user: username: test; password: P@ssw0rd
+Test user: username: Test; password: P@ssw0rd
 
 ### API Docs:
 
