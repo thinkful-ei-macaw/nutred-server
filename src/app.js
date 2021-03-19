@@ -14,7 +14,7 @@ const app = express();
 
 const morganOption = NODE_ENV === "production" ? "tiny" : "common";
 
-app.use(cors({ origin: "https://nuutred.now.sh" }));
+app.use(cors());
 app.use(morgan(morganOption));
 app.use(helmet());
 
