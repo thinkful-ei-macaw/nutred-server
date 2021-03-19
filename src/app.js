@@ -13,18 +13,15 @@ const biometricsRouter = require("./biometrics/biometrics-route");
 const app = express();
 
 const morganOption = NODE_ENV === "production" ? "tiny" : "common";
-const corsOption = {
-  origin: "https://nuutred.now.sh",
-};
 
 app.use(morgan(morganOption));
 app.use(helmet());
-app.use(cors());
+app.use(cors({ origin: "https://nuutred.now.sh" }));
 
-app.use("/api/auth", cors(corsOption), authRouter);
-app.use("/api/users", cors(corsOption), registerRouter);
-app.use("/api/interests", cors(corsOption), infoRouter);
-app.use("/api/biometrics", cors(corsOption), biometricsRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/users", registerRouter);
+app.use("/api/interests", infoRouter);
+app.use("/api/biometrics", biometricsRouter);
 app.get("/", requireAuth, (req, res) => {
   res.send("Hello, world!");
 });
