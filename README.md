@@ -46,7 +46,6 @@ Test user: username: Test; password: P@ssw0rd
 
 - ReactJS
 - Postgres
-- SQL
 - HTML
 - JSX
 - CSS
