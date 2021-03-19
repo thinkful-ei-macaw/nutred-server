@@ -7,6 +7,7 @@ const jsonBodyParser = express.json();
 authRouter.post("/login", jsonBodyParser, (req, res, next) => {
   const { user_name, password } = req.body;
   const loginUser = { user_name, password };
+  res.header("Access-Control-Allow-Origin", "*");
   console.log(req.body);
   for (const [key, value] of Object.entries(loginUser))
     if (value == null)
