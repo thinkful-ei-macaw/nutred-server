@@ -4,8 +4,6 @@ const cors = require("cors");
 const authRouter = express.Router();
 const jsonBodyParser = express.json();
 
-authRouter.options("*", cors());
-authRouter.use(cors());
 authRouter.post("/login", jsonBodyParser, (req, res, next) => {
   const { user_name, password } = req.body;
   const loginUser = { user_name, password };
