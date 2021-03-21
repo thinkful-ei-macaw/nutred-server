@@ -4,7 +4,7 @@ const cors = require("cors");
 const authRouter = express.Router();
 const jsonBodyParser = express.json();
 
-authRouter.post("/login",cors(), jsonBodyParser, (req, res, next) => {
+authRouter.post("/login", jsonBodyParser, (req, res, next) => {
   const { user_name, password } = req.body;
   const loginUser = { user_name, password };
   res.header("Access-Control-Allow-Origin", "*");
