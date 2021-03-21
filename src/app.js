@@ -11,13 +11,13 @@ const infoRouter = require("./info/info-router");
 const biometricsRouter = require("./biometrics/biometrics-route");
 
 const app = express();
-app.use(cors());
+
 
 const morganOption = NODE_ENV === "production" ? "tiny" : "common";
 
 app.use(morgan(morganOption));
 app.use(helmet());
-
+app.use(cors());
 
 app.use("/api/auth", authRouter);
 app.use("/api/users", registerRouter);
